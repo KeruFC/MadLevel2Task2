@@ -9,16 +9,15 @@ import com.example.madlevel2task2.databinding.ItemQuestionBinding
 class QuestionAdapter(private val questions : List<Question>) :
     RecyclerView.Adapter<QuestionAdapter.ViewHolder>(){
 
+    override fun getItemCount(): Int {
+        return questions.size
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_question, parent, false)
         )
     }
-
-    override fun getItemCount(): Int {
-        return questions.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.databind(questions[position])
     }
@@ -29,5 +28,6 @@ class QuestionAdapter(private val questions : List<Question>) :
         fun databind(question: Question) {
             binding.tvQuestions.text = question.question
         }
+
     }
 }
